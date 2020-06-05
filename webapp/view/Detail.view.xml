@@ -4,17 +4,18 @@
 
 		<semantic:content>
 			<ObjectHeader id="objectHeader" title="{PoNumber}" number="{      path: 'NetValue',      formatter: '.formatter.currencyValue'     }" numberUnit="{Currency}">
-			<attributes>
-			    <ObjectAttribute text="{VendName}" id="__attribute6" title="{i18n>Vendor}"/>
-			</attributes>
 			</ObjectHeader>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
 					<content>
-					    <ObjectAttribute text="{PoNumber}" id="__attribute1" title="Purchase Order"/>
-					    <ObjectAttribute text="{Acctasscat}" id="__attribute2" title="Account Assignment"/>
-					    <ObjectAttribute text="attribute text" id="__attribute5"/>
+					    <ObjectAttribute text="{PoNumber}" id="__attribute1" title="{i18n>PurchaseOrder}"/>
+					    <ObjectAttribute text="{Acctasscat}" id="__attribute2" title="{i18n>AccountAssignment}"/>
+					    <ObjectAttribute text="Delivery Date" id="__attribute5" title="{i18n>DeliveryDate}"/>
+					    <ObjectAttribute xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" text="{VendName}" id="__attribute6_copy" title="{i18n>Vendor}"/>
+					    <ObjectAttribute xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" text="{CoCode}" id="__attribute6_copy2" title="{i18n>CompanyCode}"/>
+					    <ObjectAttribute text="{CreatedBy}" id="__attribute10" title="{i18n>CreatedBy}"/>
+					    <ObjectAttribute text="{path: 'CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy hh:mm' } }" id="__attribute11" title="{i18n>CreatedOn}"/>
 					</content>
 					</IconTabFilter>
 					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}">
@@ -70,6 +71,16 @@
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
+
+	<semantic:positiveAction>
+
+	    <semantic:PositiveAction text="{i18n>Approval}" id="__action0" press="onApprovalPress"/>
+
+	</semantic:positiveAction>
+
+	<semantic:negativeAction><semantic:NegativeAction text="{i18n>Deny}" id="__action1" press="onDenyPress"/>
+
+	</semantic:negativeAction>
 
 	</semantic:DetailPage>
 

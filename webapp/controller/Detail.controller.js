@@ -169,8 +169,15 @@ sap.ui.define([
 				oViewModel.setProperty("/busy", true);
 				// Restore original busy indicator delay for the detail view
 				oViewModel.setProperty("/delay", iOriginalViewBusyDelay);
-			}
+			},
+			
+			onApprovalPress: function () {
+				
+			},
 
+			onDenyPress: function () {
+				
+			}
 		});
 
 	}
