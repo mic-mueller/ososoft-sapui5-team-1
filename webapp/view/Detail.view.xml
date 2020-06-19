@@ -3,7 +3,7 @@
 	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
 
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{PoNumber}" number="{      path: 'NetValue',      formatter: '.formatter.currencyValue'     }" numberUnit="{Currency}">
+			<ObjectHeader id="objectHeader" title="Bestellnr. {PoNumber}" number="{      path: 'NetValue',      formatter: '.formatter.currencyValue'     }" numberUnit="{Currency}">
 			</ObjectHeader>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
@@ -11,7 +11,7 @@
 					<content>
 					    <ObjectAttribute text="{PoNumber}" id="__attribute1" title="{i18n>PurchaseOrder}"/>
 					    <ObjectAttribute text="{Acctasscat}" id="__attribute2" title="{i18n>AccountAssignment}"/>
-					    <ObjectAttribute text="Delivery Date" id="__attribute5" title="{i18n>DeliveryDate}"/>
+					    <ObjectAttribute text="{Delivery Date}" id="__attribute5" title="{i18n>DeliveryDate}"/>
 					    <ObjectAttribute xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" text="{VendName}" id="__attribute6_copy" title="{i18n>Vendor}"/>
 					    <ObjectAttribute xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" text="{CoCode}" id="__attribute6_copy2" title="{i18n>CompanyCode}"/>
 					    <ObjectAttribute text="{CreatedBy}" id="__attribute10" title="{i18n>CreatedBy}"/>
@@ -67,10 +67,6 @@
 			</customData>
 			</Table>
 		</semantic:content>
-
-		<semantic:sendEmailAction>
-			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
-		</semantic:sendEmailAction>
 
 	<semantic:positiveAction>
 

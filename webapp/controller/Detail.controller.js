@@ -2,8 +2,9 @@
 sap.ui.define([
 		"de/ososoft/team1/purchase_order/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
-		"de/ososoft/team1/purchase_order/model/formatter"
-	], function (BaseController, JSONModel, formatter) {
+		"de/ososoft/team1/purchase_order/model/formatter",
+		"sap/m/MessageToast"
+	], function (BaseController, JSONModel, formatter, MessageToast) {
 		"use strict";
 
 		return BaseController.extend("de.ososoft.team1.purchase_order.controller.Detail", {
@@ -172,11 +173,11 @@ sap.ui.define([
 			},
 			
 			onApprovalPress: function () {
-				
+				MessageToast.show(this.getResourceBundle().getText("PurchaseOrderApproved"));
 			},
 
 			onDenyPress: function () {
-				
+					MessageToast.show(this.getResourceBundle().getText("PurchaseOrderDenied"));
 			}
 		});
 

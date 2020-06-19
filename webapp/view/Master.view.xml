@@ -30,24 +30,6 @@
 			</List>
 		</semantic:content>
 
-		<semantic:sort>
-			<semantic:SortSelect id="sort" selectedKey="{masterView>/sortBy}" change="onSort">
-				<core:Item id="masterSort1" key="PoNumber" text="{i18n>masterSort1}"/>
-				<core:Item id="masterSort2" key="NetValue" text="{i18n>masterSort2}"/>
-			</semantic:SortSelect>
-		</semantic:sort>
-
-		<semantic:filter>
-			<semantic:FilterAction id="filter" press="onOpenViewSettings"/>
-		</semantic:filter>
-
-		<semantic:group>
-			<semantic:GroupSelect id="group" selectedKey="{masterView>/groupBy}" change="onGroup">
-				<core:Item id="masterGroupNone" key="None" text="{i18n>masterGroupNone}"/>
-				<core:Item id="masterGroup1" key="NetValue" text="{i18n>masterGroup1}"/>
-			</semantic:GroupSelect>
-		</semantic:group>
-
 	</semantic:MasterPage>
 
 </mvc:View>
