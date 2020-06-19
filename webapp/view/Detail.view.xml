@@ -47,7 +47,7 @@
 					</Column>
 					<Column id="__column4">
 					    <header>
-					        <Text text="Net Value" id="__text13"/>
+					        <Text text="{i18n>detailLineItemTableNetValue}" id="__text13"/>
 					    </header>
 					</Column>
 				</columns>
