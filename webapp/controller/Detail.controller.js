@@ -3,9 +3,17 @@ sap.ui.define([
 		"de/ososoft/team1/purchase_order/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
 		"de/ososoft/team1/purchase_order/model/formatter",
-		"sap/m/MessageToast"
-	], function (BaseController, JSONModel, formatter, MessageToast) {
-		"use strict";
+		"sap/m/MessageToast",
+		"sap/m/Button",
+		"sap/m/Dialog",
+		"sap/m/Label",
+		"sap/m/Text",
+		"sap/m/TextArea",
+		"sap/ui/core/mvc/Controller",
+		"sap/ui/layout/HorizontalLayout",
+		"sap/ui/layout/VerticalLayout",
+		"sap/m/library"
+	], function (BaseController, JSONModel, formatter, MessageToast, Button, Dialog, Label, Text, TextArea, Controller, HorizontalLayout, VerticalLayout, mobileLibrary) {
 
 		return BaseController.extend("de.ososoft.team1.purchase_order.controller.Detail", {
 
@@ -171,13 +179,74 @@ sap.ui.define([
 				// Restore original busy indicator delay for the detail view
 				oViewModel.setProperty("/delay", iOriginalViewBusyDelay);
 			},
-			
-			onApprovalPress: function () {
-				MessageToast.show(this.getResourceBundle().getText("PurchaseOrderApproved"));
-			},
 
+			onApprovalPress: function () {
+				var rBundle = this.getResourceBundle();
+				var oDialog = new Dialog({
+				title: rBundle.getText('ApprovalDialog'),
+				type: 'Message',
+				content: [
+					new TextArea('dialogTextarea', {
+						width: '100%',
+						placeholder: rBundle.getText('AddOptionalNode')
+					})
+				],
+				beginButton: new Button({
+					/*type: ButtonType.Emphasized,*/
+					text: rBundle.getText("Approval"),
+					press: function () {
+						var sText = sap.ui.getCore().byId('dialogTextarea').getValue();
+						var msg = rBundle.getText("dialogMsgApprovalSubmit", [sText]);
+						MessageToast.show(msg);
+						oDialog.close();
+					}
+				}),
+				endButton: new Button({
+					text: rBundle.getText('Cancel'),
+					press: function () {
+						oDialog.close();
+					}
+				}),
+				afterClose: function () {
+					oDialog.destroy();
+				}
+			});
+
+			oDialog.open();
+			},
+			
 			onDenyPress: function () {
-					MessageToast.show(this.getResourceBundle().getText("PurchaseOrderDenied"));
+				var rBundle = this.getResourceBundle();
+				var oDialog = new Dialog({
+				title: rBundle.getText('DenyDialog'),
+				type: 'Message',
+				content: [
+					new TextArea('dialogTextarea', {
+						width: '100%',
+						placeholder: rBundle.getText('AddOptionalNode')
+					})
+				],
+				beginButton: new Button({
+					text: rBundle.getText("Approval"),
+					press: function () {
+						var sText = sap.ui.getCore().byId('dialogTextarea').getValue();
+						var msg = rBundle.getText("dialogMsgDenySubmit", [sText]);
+						MessageToast.show(msg);
+						oDialog.close();
+					}
+				}),
+				endButton: new Button({
+					text: rBundle.getText('Cancel'),
+					press: function () {
+						oDialog.close();
+					}
+				}),
+				afterClose: function () {
+					oDialog.destroy();
+				}
+			});
+
+			oDialog.open();
 			}
 		});
 
