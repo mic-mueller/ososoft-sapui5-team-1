@@ -5,9 +5,7 @@
 		<semantic:content>
 			<ObjectHeader id="objectHeader" title="Bestellnr. {PoNumber}" number="{      path: 'NetValue',      formatter: '.formatter.currencyValue'     }" numberUnit="{Currency}">
 			</ObjectHeader>
-			<!-- #Team1
-			Anzeige des Bildes in der Detailsicht. Statisches Bild. 
--->
+			<!-- #Team1 Anzeige des Bildes in der Detailsicht. Statisches Bild.  -->
 			<Image width="310px" height="180px" id="__image0" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Bicycle-Silhouette.svg/1280px-Bicycle-Silhouette.svg.png" alt="bike" mode="Background"/>
 			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
 				<items>
@@ -28,9 +26,7 @@
 					</IconTabFilter>
 				</items>
 			</IconTabBar>
-			<!-- #Team1
-	Aufbau der Tabelle in der Detailsicht
--->
+			<!-- #Team1 Aufbau der Tabelle in der Detailsicht -->
 			<Table id="lineItemsList" width="auto" items="{Items}" updateFinished="onListUpdateFinished" noDataText="{i18n>detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin">
 				<headerToolbar>
 					<Toolbar id="lineItemsToolbar">

@@ -4,6 +4,7 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel",
 		"de/ososoft/team1/purchase_order/model/formatter",
 		"sap/m/MessageToast",
+		//START #Team1 Dialog Imports
 		"sap/m/Button",
 		"sap/m/Dialog",
 		"sap/m/Label",
@@ -14,7 +15,7 @@ sap.ui.define([
 		"sap/ui/layout/VerticalLayout",
 		"sap/m/library"
 	], function (BaseController, JSONModel, formatter, MessageToast, Button, Dialog, Label, Text, TextArea, Controller, HorizontalLayout, VerticalLayout, mobileLibrary) {
-
+		//END #Team1 Dialog Imports
 		return BaseController.extend("de.ososoft.team1.purchase_order.controller.Detail", {
 
 			formatter: formatter,
@@ -43,21 +44,6 @@ sap.ui.define([
 			/* =========================================================== */
 			/* event handlers                                              */
 			/* =========================================================== */
-
-			/**
-			 * Event handler when the share by E-Mail button has been clicked
-			 * @public
-			 */
-			onShareEmailPress : function () {
-				var oViewModel = this.getModel("detailView");
-
-				sap.m.URLHelper.triggerEmail(
-					null,
-					oViewModel.getProperty("/shareSendEmailSubject"),
-					oViewModel.getProperty("/shareSendEmailMessage")
-				);
-			},
-
 
 			/**
 			 * Updates the item count within the line item table's header
@@ -156,7 +142,7 @@ sap.ui.define([
 				oViewModel.setProperty("/shareSendEmailMessage",
 					oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
 			},
-
+			
 			_onMetadataLoaded : function () {
 				// Store original busy indicator delay for the detail view
 				var iOriginalViewBusyDelay = this.getView().getBusyIndicatorDelay(),
@@ -179,7 +165,8 @@ sap.ui.define([
 				// Restore original busy indicator delay for the detail view
 				oViewModel.setProperty("/delay", iOriginalViewBusyDelay);
 			},
-
+			
+			//START #Team1 onApprovalPress zeige Dialog mit einem Textfeld
 			onApprovalPress: function () {
 				var rBundle = this.getResourceBundle();
 				var oDialog = new Dialog({
@@ -192,9 +179,9 @@ sap.ui.define([
 					})
 				],
 				beginButton: new Button({
-					/*type: ButtonType.Emphasized,*/
 					text: rBundle.getText("Approval"),
 					press: function () {
+						//ANMERKUNG #Team1 hier kann man den Text entgegennehmen
 						var sText = sap.ui.getCore().byId('dialogTextarea').getValue();
 						var msg = rBundle.getText("dialogMsgApprovalSubmit", [sText]);
 						MessageToast.show(msg);
@@ -214,7 +201,9 @@ sap.ui.define([
 
 			oDialog.open();
 			},
+			//END #Team1 onApprovalPress
 			
+			//START #Team1 onDenyPress zeige Dialog mit einem Textfeld
 			onDenyPress: function () {
 				var rBundle = this.getResourceBundle();
 				var oDialog = new Dialog({
@@ -229,6 +218,7 @@ sap.ui.define([
 				beginButton: new Button({
 					text: rBundle.getText("Approval"),
 					press: function () {
+						//ANMERKUNG #Team1 hier kann man den Text entgegennehmen
 						var sText = sap.ui.getCore().byId('dialogTextarea').getValue();
 						var msg = rBundle.getText("dialogMsgDenySubmit", [sText]);
 						MessageToast.show(msg);
@@ -249,6 +239,7 @@ sap.ui.define([
 			oDialog.open();
 			}
 		});
-
+		//END #Team1 onDenyPress zeige Dialog mit einem Textfeld
+		
 	}
 );
